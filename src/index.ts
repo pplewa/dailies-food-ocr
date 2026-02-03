@@ -5,7 +5,8 @@ import { extractFoodTable } from "./lib.js";
 interface ParsedArgs {
   images: string[];
   output?: string;
-  apiKey?: string;
+  apiKey?: string;  
+  model?: string;
   help: boolean;
 }
 
@@ -21,6 +22,8 @@ function parseArgs(args: string[]): ParsedArgs {
       result.output = args[++i];
     } else if (arg === "-k" || arg === "--api-key") {
       result.apiKey = args[++i];
+    } else if (arg === "-m" || arg === "--model") {
+      result.model = args[++i];
     } else if (!arg.startsWith("-")) {
       result.images.push(arg);
     }
@@ -39,6 +42,7 @@ USAGE:
 OPTIONS:
   -o, --output <file>   Write output to file instead of stdout
   -k, --api-key <key>   Gemini API key (default: GEMINI_API_KEY env var)
+  -m, --model <name>    Gemini model to use (default: GEMINI_MODEL env var)
   -h, --help            Show this help message
 
 EXAMPLES:
