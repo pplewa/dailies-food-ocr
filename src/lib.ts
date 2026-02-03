@@ -47,7 +47,7 @@ export async function extractFoodTable(
     );
   }
 
-  const modelName = options.model || process.env.GEMINI_API_KEY || "gemini-3-flash-preview";
+  const modelName = options.model || "gemini-3-flash-preview";
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({ model: modelName });
 

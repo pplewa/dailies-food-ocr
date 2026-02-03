@@ -44,6 +44,10 @@ dailies-food-ocr image1.jpg image2.jpg -o combined.md
 
 # With API key flag
 dailies-food-ocr screenshot.jpg -k YOUR_API_KEY
+
+# With model
+
+dailies-food-ocr screenshot.jpg -m gemini-2.5-flash-lite
 ```
 
 ### Programmatic

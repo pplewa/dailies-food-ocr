@@ -5,7 +5,7 @@ import { extractFoodTable } from "./lib.js";
 interface ParsedArgs {
   images: string[];
   output?: string;
-  apiKey?: string;  
+  apiKey?: string;
   model?: string;
   help: boolean;
 }
@@ -40,15 +40,15 @@ USAGE:
   food-ocr [OPTIONS] <image1> [image2] [...]
 
 OPTIONS:
-  -o, --output <file>   Write output to file instead of stdout
-  -k, --api-key <key>   Gemini API key (default: GEMINI_API_KEY env var)
-  -m, --model <name>    Gemini model to use (default: GEMINI_MODEL env var)
-  -h, --help            Show this help message
+  -o, --output <file>    Write output to file instead of stdout
+  -k, --api-key <key>    Gemini API key (default: GEMINI_API_KEY env var)
+  -m, --model <name>     Gemini model name (default: gemini-3-flash-preview)
+  -h, --help             Show this help message
 
 EXAMPLES:
   food-ocr screenshot.jpg
   food-ocr image1.jpg image2.jpg -o combined.md
-  GEMINI_API_KEY=xxx food-ocr screenshot.png
+  food-ocr screenshot.jpg -m gemini-2.5-flash-lite
 
 SUPPORTED FORMATS:
   .jpg, .jpeg, .png, .gif, .webp
@@ -64,7 +64,10 @@ async function main(): Promise<void> {
   }
 
   try {
-    const markdown = await extractFoodTable(args.images, { apiKey: args.apiKey });
+    const markdown = await extractFoodTable(args.images, {
+      apiKey: args.apiKey,
+      model: args.model,
+    });
     
     if (args.output) {
       writeFileSync(args.output, markdown + "\n");
