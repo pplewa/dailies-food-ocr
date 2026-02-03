@@ -9,7 +9,13 @@ IMPORTANT RULES:
 - Include the macro summary line below each section header
 
 OUTPUT FORMAT:
-For each food section found, output in this exact format:
+
+First, output a Totals section that sums ALL macros from all food sections:
+
+#### Totals
+[sum of all kcal] kcal • [sum of all protein] g protein • [sum of all carbs] g carbs • [sum of all fat] g fat
+
+Then, for each food section found, output in this exact format:
 
 #### [Section Name]
 [X] kcal • [X] g protein • [X] g carbs • [X] g fat
@@ -19,11 +25,12 @@ For each food section found, output in this exact format:
 | HH:MM | Item name as shown      | [number] | [unit] | [X] kcal   |
 
 NOTES:
-- Use the exact macro summary shown in the section header
+- The Totals section must be FIRST and sum all macros from Breakfast + Lunch + Dinner + Snacks + Supplements
+- Use the exact macro summary shown in each section header
 - Time should be in HH:MM format
 - Calories should include "kcal" suffix
 - Preserve original unit text (g, ml, serving, tablet, capsule, etc.)
 - If a section is empty or not present, skip it entirely
-- Output sections in order: Breakfast, Lunch, Dinner, Snacks, Supplements
+- Output sections in order: Totals, Breakfast, Lunch, Dinner, Snacks, Supplements
 
 Output ONLY the markdown tables, no explanations or additional text.`;
